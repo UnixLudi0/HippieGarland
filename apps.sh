@@ -1,0 +1,1 @@
+yay -S --noconfirm kitty yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick neovim mpv losslessCut gimp swappy libreoffice-still btop steam vesktop telegram pavucontrol firefox iwd iwgtk rofi-git waybar bitwarden copyq blueman qbittorrent thunderbird swaync keyd noto-fonts nerd-fonts woff2-font-awesome
