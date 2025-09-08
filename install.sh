@@ -1,33 +1,46 @@
 #!/bin/bash
 
-PS3="Это CrazyHippieland, выберите скрипт: "
+bash ./config.sh
+PS3="Это HippieGarland, выберите скрипт: "
 
-options=("Установить Arch Linux" "Установить Hyprland" "Установка драйверов Nvidia" "Применение оптимизаций из ARU" "Установка прикладных программ" "Удаление Hyprland и прикладных программ" "Выход")
+options=("Установить Arch Linux" "Редактировать конфиг" "Базовая настройка" "Установка Hyprland" "Установка прикладных программ" "Установка продвинутых программ" "WINE" "Оптимизация" "Удаление Hyprland и прикладных программ" "Выход")
 
 select opt in "${options[@]}"; do
     case $opt in
         "Установить Arch Linux")
-            echo "Запуск скрипта..."
-            #sudo bash ./arch.sh
+            #echo "Запуск arch.txt..."
+            #sudo bash ./arch.txt
             ;;
-        "Установить Hyprland")
-            echo "Запуск скрипта..."
-            bash ./hyprland.sh
+        "Редактировать конфиг")
+            echo "Запуск config.sh..."
+            bash ./scripts/config.sh
             ;;
-        "Установка драйверов Nvidia")
-            echo "Запуск скрипта..."
-            bash ./nvidia.sh
+        "Базовая настройка")
+            echo "Запуск base.sh..."
+            bash ./scripts/base.sh
             ;;
-        "Применение оптимизаций из ARU")
-            echo "Запуск скрипта..."
-            bash ./aru.sh
+        "Установка Hyprland")
+            echo "Запуск hyprland.sh..."
+            bash ./scripts/hyprland.sh
             ;;
         "Установка прикладных программ")
-            echo "Запуск скрипта..."
-            bash ./apps.sh
+            echo "Запуск apps.sh..."
+            bash ./scripts/apps.sh
+            ;;
+        "Установка продвинутых программ")
+            echo "Запуск apps-extra.sh..."
+            bash ./scripts/apps-extra.sh
+            ;;
+        "WINE")
+            echo "Запуск wine.sh..."
+            bash ./scripts/wine.sh
+            ;;
+        "Оптимизация")
+            echo "Запуск optimization.sh..."
+            bash ./scripts/optimization.sh
             ;;
         "Удаление Hyprland и прикладных программ")
-            echo "Запуск скрипта..."
+            echo "Запуск скрипта удаления..."
             bash ./uninstall.sh
             ;;
         "Выход")

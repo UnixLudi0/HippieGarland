@@ -1,5 +1,6 @@
 # HippieGarland
-My personal ricing of Hyprland aka dotfiles
+My personal ricing of Hyprland as known as dotfiles.
+This dotfiles aims to bring optimization, integration, candy-eye to your desktop and Hyprland
 
 ## Applications
 | Application Type         | Application Realization     |
@@ -19,7 +20,7 @@ My personal ricing of Hyprland aka dotfiles
 | Messengers               | vesktop, telegram           |
 | Email Client             | ThunderBird                 |
 | Games                    | steam                       |
-| Network                  | iwd, iwgtk                  |
+| Network                  | networkmanager              |
 | Bar                      | hyprpanel                   |
 | Password Manager         | Bitwarden                   |
 | Clipboard Manager        | copyq                       |
