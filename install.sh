@@ -1,10 +1,10 @@
 #!/bin/bash
 
-bash ./config.sh
-PS3="Это HippieGarland, выберите скрипт: "
+source scripts/config.sh
 
 options=("Установить Arch Linux" "Редактировать конфиг" "Базовая настройка" "Установка Hyprland" "Установка прикладных программ" "Установка продвинутых программ" "WINE" "Оптимизация" "Удаление Hyprland и прикладных программ" "Выход")
 
+echo "=== ГЛАВНОЕ МЕНЮ УСТАНОВКИ ==="
 select opt in "${options[@]}"; do
     case $opt in
         "Установить Arch Linux")
@@ -13,42 +13,50 @@ select opt in "${options[@]}"; do
             ;;
         "Редактировать конфиг")
             echo "Запуск config.sh..."
-            bash ./scripts/config.sh
+            source scripts/config.sh
             ;;
         "Базовая настройка")
             echo "Запуск base.sh..."
-            bash ./scripts/base.sh
+            source scripts/base.sh
             ;;
         "Установка Hyprland")
             echo "Запуск hyprland.sh..."
-            bash ./scripts/hyprland.sh
+            source scripts/hyprland.sh
             ;;
         "Установка прикладных программ")
             echo "Запуск apps.sh..."
-            bash ./scripts/apps.sh
+            source scripts/apps.sh
             ;;
         "Установка продвинутых программ")
             echo "Запуск apps-extra.sh..."
-            bash ./scripts/apps-extra.sh
+            source scripts/apps-extra.sh
             ;;
         "WINE")
             echo "Запуск wine.sh..."
-            bash ./scripts/wine.sh
+            source scripts/wine.sh
             ;;
         "Оптимизация")
             echo "Запуск optimization.sh..."
-            bash ./scripts/optimization.sh
+            source scripts/optimization.sh
             ;;
         "Удаление Hyprland и прикладных программ")
             echo "Запуск скрипта удаления..."
-            bash ./uninstall.sh
+            source uninstall.sh
             ;;
         "Выход")
+            echo "=== ФИНАЛЬНЫЕ НАСТРОЙКИ ==="
+            echo "Корневая директория: $HG_ROOT"
+            echo "Язык: ${HG_LANG:-не выбран}"
+            echo "Процессор: ${HG_CPU:-не выбран}" 
+            echo "Видеокарта: ${HG_GPU:-не выбран}"
             echo "Выход..."
-            break
+            exit 0
             ;;
         *)
             echo "Неверный выбор!"
             ;;
     esac
+    
+    echo ""
+    echo "=== ГЛАВНОЕ МЕНЮ УСТАНОВКИ ==="
 done
