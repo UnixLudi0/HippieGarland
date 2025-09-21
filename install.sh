@@ -3,7 +3,7 @@
 source scripts/config.sh
 
 options=("Установить Arch Linux" "Редактировать конфиг" "Базовая настройка" "Установка Hyprland" "Установка прикладных программ" "Установка продвинутых программ" "WINE" "Оптимизация" "Удаление Hyprland и прикладных программ" "Выход")
-
+clear
 echo "=== ГЛАВНОЕ МЕНЮ УСТАНОВКИ ==="
 select opt in "${options[@]}"; do
     case $opt in
@@ -56,7 +56,4 @@ select opt in "${options[@]}"; do
             echo "Неверный выбор!"
             ;;
     esac
-    
-    echo ""
-    echo "=== ГЛАВНОЕ МЕНЮ УСТАНОВКИ ==="
 done

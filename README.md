@@ -1,6 +1,8 @@
 # HippieGarland
-My personal ricing of Hyprland as known as dotfiles.
-This dotfiles aims to bring optimization, integration, candy-eye to your desktop and Hyprland
+My personal ricing of Hyprland using ARU optimization.
+This project aims to bring optimization, integration, candy-eye to your desktop.
+This project is in passive development.
+Thanks to [ventureo](https://codeberg.org/ventureo) for mainteining the [ARU](https://ventureo.codeberg.page)
 
 ## Applications
 | Application Type         | Application Realization     |
@@ -37,3 +39,6 @@ This dotfiles aims to bring optimization, integration, candy-eye to your desktop
 | Keyboard Remapper        | keyd                        |
 | Notification Manager     | swaync                      |
 | Mixer                    | pavucontrol                 |
+| zram                     | zram-generator              |
+| ------------------------ | --------------------------- |
+| Cleaner                  | Bleachbit                   |

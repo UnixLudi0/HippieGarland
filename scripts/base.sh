@@ -12,5 +12,22 @@ rm -r cachyos-repo
 sudo reflector --verbose --country 'Russia' -l 25 --sort rate --save /etc/pacman.d/mirrorlist
 sudo sed -i 's/\[options\]/\[options\]\nDisableDownloadTimeout/g' /etc/pacman.conf
 
-yay -S git base-devel
+yay -S linux-cachyos linux-cachyos-headers linux-zen linux-zen-headers
+yay -S git base-devel mkinitcpio-firmware
+if [[ "$HG_CPU" -eq "intel"]]; then
+  yay -S --noconfirm intel-ucode
+else
+  yay -S --noconfirm amd-ucode
+
 yay -S --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland
+
+
+
+
+
+
+
+
+
+
+sudo mkinitcpio -P

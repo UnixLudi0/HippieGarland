@@ -2,43 +2,43 @@
 export HG_ROOT=$(realpath .)
 
 config_menu() {
-    PS3="Конфигурация параметров: "
-    options=("Язык" "Процессор" "Видеокарта" "Показать настройки" "Назад")
-
+    PS3="Выберите: "
+    options=("Язык" "Процессор" "Видеокарта" "Диск" "Показать настройки" "Назад")
+    clear
     echo "=== ГЛАВНОЕ МЕНЮ КОНФИГА ==="
     select opt in "${options[@]}"; do
         case $REPLY in
-            1)  # Язык
+            1)
                 choose_language
                 ;;
-            2)  # Процессор
+            2)
                 choose_cpu
                 ;;
-            3)  # Видеокарта
+            3)
                 choose_gpu
                 ;;
-            4)  # Показать настройки
+            4)
+                choose_disk
+                ;;
+            5)
                 show_config
                 ;;
-            5)  # Назад
-                echo "Возврат в основное меню..."
+            6)
                 return 0
                 ;;
             *)
-                echo "Неверный выбор! Выберите от 1 до 5"
+                echo "Неверный выбор! Выберите от 1 до 6"
                 ;;
         esac
-        
-        # После выполнения команды снова показываем меню
-        echo ""
-        echo "=== ГЛАВНОЕ МЕНЮ КОНФИГА ==="
     done
 }
 
 choose_language() {
-    options1=("Русский" "Английский" "Назад")
+    PS3="Выберите: "
+    options=("Русский" "Английский" "Назад")
+    clear
     echo "=== ВЫБОР ЯЗЫКА ==="
-    select opt1 in "${options1[@]}"; do
+    select opt in "${options[@]}"; do
         case $REPLY in
             1)
                 export HG_LANG=ru
@@ -50,7 +50,7 @@ choose_language() {
                 echo "Выбран английский язык"
                 return 0
                 ;;
-            3)  # Назад
+            3)
                 return 0
                 ;;
             *)
@@ -61,9 +61,11 @@ choose_language() {
 }
 
 choose_cpu() {
-    options2=("Intel" "AMD" "Назад")
+    PS3="Выберите: "
+    options=("Intel" "AMD" "Назад")
+    clear
     echo "=== ВЫБОР ПРОЦЕССОРА ==="
-    select opt2 in "${options2[@]}"; do
+    select opt in "${options[@]}"; do
         case $REPLY in
             1)
                 export HG_CPU=intel-cpu
@@ -75,7 +77,7 @@ choose_cpu() {
                 echo "Выбран процессор AMD"
                 return 0
                 ;;
-            3)  # Назад
+            3)
                 return 0
                 ;;
             *)
@@ -86,9 +88,11 @@ choose_cpu() {
 }
 
 choose_gpu() {
-    options3=("Intel" "AMD" "Nvidia" "Назад")
+    PS3="Выберите: "
+    options=("Intel" "AMD" "Nvidia" "Назад")
+    clear
     echo "=== ВЫБОР ВИДЕОКАРТЫ ==="
-    select opt3 in "${options3[@]}"; do
+    select opt in "${options[@]}"; do
         case $REPLY in
             1)
                 export HG_GPU=intel-gpu
@@ -105,7 +109,7 @@ choose_gpu() {
                 echo "Выбрана видеокарта Nvidia"
                 return 0
                 ;;
-            4)  # Назад
+            4)
                 return 0
                 ;;
             *)
@@ -115,17 +119,55 @@ choose_gpu() {
     done
 }
 
-show_config() {
-    echo "=== ТЕКУЩИЕ НАСТРОЙКИ ==="
-    echo "Корневая директория: $HG_ROOT"
-    echo "Язык: ${HG_LANG:-не выбран}"
-    echo "Процессор: ${HG_CPU:-не выбран}" 
-    echo "Видеокарта: ${HG_GPU:-не выбран}"
-    echo "=========================="
-    
-    # Просто ждем любого ввода для возврата
-    read -p "Нажмите Enter для возврата..."
+choose_disk() {
+    PS3="Выберите: "
+    options=("SSD" "HDD" "Назад")
+    clear
+    echo "=== УКАЖИТЕ ТИП ДИСКА ==="
+    select opt in "${options[@]}"; do
+        case $REPLY in
+            1)
+                export HG_DISK=ssd
+                echo "Выбран SDD"
+                return 0
+                ;;
+            2)
+                export HG_DISK=hdd
+                echo "Выбран HDD"
+                return 0
+                ;;
+            3)
+                return 0
+                ;;
+            *)
+                echo "Неверный выбор!"
+                ;;
+        esac
+    done
 }
 
-# Запускаем меню конфига
+
+show_config() {
+    PS3="Выберите: "
+    options=("Назад")
+    clear
+    echo "=== ТЕКУЩИЕ НАСТРОЙКИ ==="
+    echo "Корневая директория: $HG_ROOT"
+    echo "Язык: ${HG_LANG:-не выбрано}"
+    echo "Процессор: ${HG_CPU:-не выбрано}" 
+    echo "Видеокарта: ${HG_GPU:-не выбрано}"
+    echo "Тип диска: ${HG_DISK:-не выбрано}"
+    echo "=========================="
+    select opt in "${options[@]}"; do
+        case $REPLY in
+            1)
+                return 0
+                ;;
+            *)
+                echo "Неверный выбор!"
+                ;;
+        esac
+    done
+}
+
 config_menu
